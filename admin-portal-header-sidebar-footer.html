@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Light Mode Colors */
+        :root {
+            --primary-color: #0F3487;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --submenu-background-color: #87CEEB; /* Sky blue color */
+            --primary-color-dark: #205ce9; /* Dark Mode Primary Color */
+            --background-color-dark: #333;
+            --text-color-dark: #f8f9fa;
+            --white-color: #fff;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            --primary-color: var(--primary-color-dark);
+            --background-color: var(--background-color-dark);
+            --text-color: var(--text-color-dark);
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+             height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 3em;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        header .logo {
+            font-size: 24px;
+        }
+
+        header .icons {
+            display: flex;
+            gap: 15px;
+            position: relative;
+        }
+
+        header .icons .dropdown {
+            position: relative;
+            cursor: pointer;
+        }
+
+        header .icons .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        header .icons .dropdown-content a {
+            color: var(--primary-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        header .icons .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 200px;
+            border-right: 1px dashed var(--primary-color);
+            padding: 20px;
+            color: var(--white-color);
+            transition: width 0.3s ease;
+            background-color: var(--primary-color);
+        }
+
+        .sidebar .menu-item {
+            cursor: pointer;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .submenu {
+            padding-left: 20px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .submenu .menu-item {
+            background-color: var(--primary-color);
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .submenu .menu-item:hover {
+            background-color: var(--submenu-background-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--background-color);
+            border-radius: 52px; /* Adjusted for visibility */
+            transition: background-color 0.3s;
+            box-sizing: border-box;
+            overflow: visible; /* Ensure the border-radius shows */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Footer */
+        footer {
+            color: var(--white-color);
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: var(--primary-color);
+        }
+
+        .ask-question {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 20px;
+            border-radius: 50px;
+        }
+
+        .toggle-mode {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 60px;
+                padding: 15px;
+            }
+
+            .sidebar .menu-item {
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .submenu .menu-item {
+                font-size: 14px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .icons {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .toggle-mode {
+                font-size: 18px;
+            }
+
+            .ask-question {
+                padding: 8px 15px;
+            }
+        }
+
+        .menu-item{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Logo</div>
+        <div class="icons">
+            <div class="dropdown">
+                🔔 Notifications
+                <div class="dropdown-content">
+                    <a href="#">Notification 1</a>
+                    <a href="#">Notification 2</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                👤 Profile
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+            <div class="toggle-mode" id="modeToggle">🌞</div> <!-- Light/Dark mode toggle icon -->
+        </div>
+    </header>
+
+    <div style="display: flex; flex: 1;">
+        <aside class="sidebar">
+            <ul>
+                <li class="menu-item">Dashboard</li>
+                <li class="menu-item" id="clientsMenu">Clients</li>
+                <ul class="submenu" id="clientsSubMenu">
+                    <li class="menu-item">Jobs</li>
+                    <li class="menu-item">Talent Search</li>
+                </ul>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>Dashboard</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Admin</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>User</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <footer>
+        Copyright © 2010 - 2025 Workpod. All rights reserved | Terms & Conditions | Privacy Policy
+        <button class="ask-question">Ask a Question</button>
+    </footer>
+
+    <script>
+        const modeToggle = document.getElementById('modeToggle');
+        const html = document.documentElement;
+
+        modeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark-mode'); // Toggle dark mode on the <html> element
+
+            // Toggle icon based on the mode
+            if (html.classList.contains('dark-mode')) {
+                modeToggle.textContent = '🌙'; // Dark mode icon
+            } else {
+                modeToggle.textContent = '🌞'; // Light mode icon
+            }
+        });
+
+        // Toggle submenu visibility for Clients menu
+        const clientsMenu = document.getElementById('clientsMenu');
+        const clientsSubMenu = document.getElementById('clientsSubMenu');
+        
+        clientsMenu.addEventListener('click', () => {
+            const isVisible = clientsSubMenu.style.display === 'block';
+            clientsSubMenu.style.display = isVisible ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>

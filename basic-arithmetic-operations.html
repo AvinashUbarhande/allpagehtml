@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operations with Input</title>
+</head>
+<body>
+    <h1>Enter Two Numbers</h1>
+    <input type="number" id="number1" placeholder="Enter first number">
+    <input type="number" id="number2" placeholder="Enter second number">
+    <button onclick="performOperations()">Calculate</button>
+
+    <h2>Results:</h2>
+    <p id="results"></p>
+
+    <script>
+        function performOperations() {
+            // Get input values
+            var num1 = parseFloat(document.getElementById('number1').value);
+            var num2 = parseFloat(document.getElementById('number2').value);
+
+            // Calculate operations
+            var results = calculateOperations(num1, num2);
+
+            // Display results
+            document.getElementById('results').innerHTML = `
+                Sum: ${results.sum}<br>
+                Difference: ${results.difference}<br>
+                Product: ${results.product}<br>
+                Quotient: ${results.quotient}
+            `;
+        }
+
+        function calculateOperations(num1, num2) {
+            var sum = num1 + num2;
+            var difference = num1 - num2;
+            var product = num1 * num2;
+            var quotient = num1 / num2;
+
+            return {
+                sum: sum,
+                difference: difference,
+                product: product,
+                quotient: quotient
+            };
+        }
+    </script>
+</body>
+</html>

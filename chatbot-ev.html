@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chetan's Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      /* background: #f0f0f0; */
+      color: #333;
+       top: 0px!important;
+    }
+
+    header {
+      background: #1e1e1e;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b3d91, #003366);
+      color: white;
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background: white;
+      color: #0b3d91;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      border-radius: 4px;
+    }
+
+    .about, .skills, .projects, .contact {
+      /* background: white; */
+      margin-top: 20px;
+    }
+
+    .skills ul {
+      list-style: none;
+      padding: 0;
+      columns: 2;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .skills li {
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    .projects .project-card {
+      /* background: #f9f9f9; */
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-left: 5px solid #0b3d91;
+      text-align: left;
+    }
+
+    .footer {
+      text-align: center;
+      background: #1e1e1e;
+      color: white;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .new-feature {
+      /* background-color: #f0f8ff; */
+      border-left: 6px solid #007bff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      max-width: 700px;
+      text-align: left;
+    }
+
+    .new-feature h2 {
+      color: #007bff;
+    }
+
+    .new-feature button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .new-feature button:hover {
+      background-color: #0056b3;
+    }
+
+    #services .service-card {
+      width: 45%;
+      /* background: #ffffff; */
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    #services .service-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      #services .service-card {
+        width: 100%;
+      }
+
+      .skills ul {
+        columns: 1;
+      }
+    }
+
+
+
+
+     .goog-te-gadget img,.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
+            display: none!important;
+        }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+       <button onclick="toggleDarkMode()">  Mode</button>
+        <!-- Google Translate Widget Script -->
+      <a  >
+    <div id="google_translate_element"></div> </a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <h1>Hello, I'm Chetan</h1>
+    <p>A Frontend Developer turning ideas into responsive, accessible web experiences.</p>
+    <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })">
+      View My Work
+    </button>
+  </section>
+
+  
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a Web Developer specializing in creating clean, modern, and user-friendly websites. 
+      With over 3 years of experience in building web applications, I focus on crafting engaging digital experiences that help businesses grow online.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML5 / CSS3</li>
+      <li>JavaScript / TypeScript</li>
+      <li>React.js / Next.js</li>
+      <li>Tailwind CSS / Sass</li>
+      <li>Node.js / Express</li>
+      <li>MongoDB / Firebase</li>
+      <li>Git / GitHub</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>A fully responsive personal portfolio built with HTML, CSS, and JavaScript. Features include smooth scroll, responsive layout, and embedded Calendly integration.</p>
+    </div>
+    <div class="project-card">
+      <h3>Task Manager App</h3>
+      <p>Developed a to-do list web app using React and Firebase with real-time updates, user auth, and mobile support.</p>
+    </div>
+    <div class="project-card">
+      <h3>E-commerce Landing Page</h3>
+      <p>A modern product landing page built with Tailwind CSS and integrated with Stripe for payments. Optimized for SEO and performance.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" style="padding: 60px 20px; ">
+    <h2 style="text-align: center;">Our New Services</h2>
+    <div class="service-list">
+      <!-- Service 1 -->
+      <div class="service-card">
+        <h3>📅 Automated Appointment Reminders</h3>
+        <p>Never miss an appointment again! We now send email and SMS reminders before your scheduled time.</p>
+        <ul>
+          <li>Email & SMS notifications</li>
+          <li>Reschedule/cancel links included</li>
+          <li>Calendar sync support</li>
+        </ul>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card">
+        <h3>🌐 Multilingual Chatbot Support</h3>
+        <p>Chat with us in your preferred language! Our AI chatbot now supports multiple languages for a smoother user experience.</p>
+        <ul>
+          <li>Automatic language detection</li>
+          <li>Live translations available</li>
+          <li>Great for global customers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Let's Connect</h2>
+    <p>If you'd like to discuss a project or just want to say hi, feel free to schedule a meeting below 👇</p>
+
+    <!-- Calendly Widget -->
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/chetan9689576210"
+      style="min-width: 320px; height: 700px;">
+    </div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Chetan. Built with love and lots of coffee ☕</p>
+  </footer>
+
+  <!-- Chatbot Script -->
+  <script>
+    window.chtlConfig = { chatbotId: "4171144813" };
+  </script>
+  <script
+    async
+    data-id="4171144813"
+    id="chtl-script"
+    type="text/javascript"
+    src="https://chatling.ai/js/embed.js">
+  </script>
+
+  <!-- Dark Mode Script -->
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+    <script type="text/javascript">
+        // Google Translate initialization function
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language of your page
+                includedLanguages: 'en,es,fr,de,it,pt,hi,zh-CN', // Supported languages for translation
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+
+        // Load Google Translate API script
+        function loadGoogleTranslateScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(script);
+        }
+
+        // Load the Google Translate script after the page is loaded
+        window.onload = loadGoogleTranslateScript;
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>One Random Color Change</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      transition: background-color 1s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      font-size: 2em;
+      color: white;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Background set to random color.</div>
+
+<script>
+function getTimeBasedColor() {
+  const hour = new Date().getHours();
+  if (hour >= 6 && hour < 12) return "#FFE066"; // morning
+  if (hour >= 12 && hour < 18) return "#4D96FF"; // afternoon
+  if (hour >= 18 && hour < 21) return "#9D4EDD"; // evening
+  return "#1B1B2F"; // night
+}
+document.body.style.backgroundColor = getTimeBasedColor();
+</script>
+
+  <script>
+    // function getRandomColor() {
+    //   const letters = '0123456789ABCDEF';
+    //   let color = '#';
+    //   for (let i = 0; i < 6; i++) {
+    //     color += letters[Math.floor(Math.random() * 16)];
+    //   }
+    //   return color;
+    // }
+
+    // // Set random color immediately on page load
+    // document.body.style.backgroundColor = getRandomColor();
+
+    // After 1.5 seconds, change to another random color once
+    // setTimeout(() => {
+    //   document.body.style.backgroundColor = getRandomColor();
+    //   document.getElementById('message').textContent = 'Background changed once to a new random color.';
+    // }, 1500);
+  </script>
+</body>
+</html>

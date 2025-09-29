@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Chatbot</title>
+  <style>
+    /* Chat container */
+    .chat-container {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    /* Chat message bubble */
+    .message {
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 15px;
+      background-color: #e1e1e1;
+      max-width: 80%;
+    }
+
+    .message.user {
+      align-self: flex-end;
+      background-color: #a1e3ff;
+    }
+
+    .message.bot {
+      align-self: flex-start;
+      background-color: #f1f1f1;
+    }
+
+    /* Scrollable message area */
+    .messages {
+      flex-grow: 1;
+      overflow-y: auto;
+      max-height: 80%;
+      padding-right: 10px;
+    }
+
+    /* Input area */
+    .input-area {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .input-area input {
+      flex-grow: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-area button {
+      padding: 8px 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+
+    .input-area button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <!-- User and bot messages will appear here -->
+    </div>
+    <div class="input-area">
+      <input type="text" id="userMessage" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to send message
+    function sendMessage() {
+      let userMessage = document.getElementById('userMessage').value;
+      if (userMessage.trim() !== "") {
+        displayMessage(userMessage, 'user');
+        document.getElementById('userMessage').value = "";
+
+        // Simulate bot response after a short delay
+        setTimeout(() => {
+          let botReply = "Here is a long response from the bot. " + 
+                          "It can be up to 10 lines or more. " +
+                          "This is a simulated response that will be displayed in a scrolling area. " +
+                          "It keeps going to show how the scrolling works. " +
+                          "More lines will continue here. " +
+                          "The chat should scroll as the bot continues to reply. " +
+                          "This is the 6th line, and it’s still adding more text. " +
+                          "Here’s the 7th line of response. " +
+                          "The 8th line, more scrolling. " +
+                          "Finally, this is the 10th line, the end of the message.";
+
+          displayMessage(botReply, 'bot');
+        }, 1000); // Simulate a delay of 1 second
+      }
+    }
+
+    // Function to display messages
+    function displayMessage(message, sender) {
+      let messagesContainer = document.getElementById('messages');
+
+      let messageElement = document.createElement('div');
+      messageElement.classList.add('message', sender);
+      messageElement.textContent = message;
+
+      messagesContainer.appendChild(messageElement);
+
+      // Scroll to the bottom
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>

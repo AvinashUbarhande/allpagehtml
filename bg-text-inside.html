@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Fill Text</title>
+  <style>
+    body{
+        margin: 0;
+      padding: 0;
+    }
+    section {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .image-text {
+      font-size: 100px;
+      font-weight: bold;
+      background-image: url('./assets/home-Banner.jpg');
+      background-size: cover;
+      background-position: center;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-align: center;
+      font-family: 'Arial Black', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+    <section>
+  <div class="image-text">
+    Shaping Transformations,<br/>
+    Driven by AI.
+  </div>
+  </section>
+
+
+
+
+
+  <style>
+aside {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.animated-text {
+  font-size: 80px;
+  font-weight: bold;
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+  background-size: 600% 600%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientMove 5s ease infinite;
+  font-family: sans-serif;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+<aside>
+<div class="animated-text">VIBRANT</div>
+</aside>
+ <style>
+.galay {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.shadow-text {
+  font-size: 100px;
+  font-weight: 900;
+  background-image: url('./assets/home-Banner.jpg');
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  font-family: sans-serif;
+}
+</style>
+<div class="galay">
+<div class="shadow-text">GALAXY</div>
+</div>
+
+
+</body>
+</html>

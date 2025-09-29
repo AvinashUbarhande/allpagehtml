@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatbot</title>
+
+  <!-- CSS to hide the branding -->
+  <style>
+    a[href*="chatling.ai"] {
+      display: none !important;
+    }
+
+    a[href*="chatling.ai"]::before,
+    a[href*="chatling.ai"]::after {
+      display: none !important;
+    }
+
+    /* Optional: target containing div if needed */
+    div[data-v-12118f79] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Chatling Script for embedded chatbot -->
+  <script>
+    window.chtlConfig = { chatbotId: "4171144813" };
+  </script>
+  <script async data-id="4171144813" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+
+  <!-- JavaScript to remove the "Powered by Chatling" element -->
+  <script>
+    window.addEventListener('load', () => {
+      const tryRemoveBranding = () => {
+        const poweredBy = document.querySelector('a[href*="chatling.ai"]')?.closest('div');
+        if (poweredBy) {
+          poweredBy.remove();
+        } else {
+          // Retry in case it's not loaded yet
+          setTimeout(tryRemoveBranding, 500);
+        }
+      };
+      tryRemoveBranding();
+    });
+  </script>
+
+</body>
+</html>
