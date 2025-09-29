@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Image with Scaling</title>
+    <style>
+        /* Basic styling to center the image on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #googlePayImage {
+            width: 200px; /* Default size of the image */
+            height: auto;
+            transition: transform 0.3s ease; /* Smooth transition for scaling */
+            cursor: pointer;
+        }
+
+        /* Scale image on hover */
+        #googlePayImage:hover {
+            transform: scale(1.2); /* Scales image by 20% when hovered */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Image wrapped inside an anchor tag to make it clickable -->
+    <a href="https://pay.google.com" target="_blank">
+        <img id="googlePayImage" src="assets/home-Banner.jpg" alt="Google Pay">
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Search and Highlight</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+    input[type="text"] {
+      width: 200px;
+      padding: 5px;
+    }
+    button {
+      padding: 5px 10px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Search and Highlight Text on This Page</h1>
+  <p>
+    This is a sample paragraph. You can search for any word like "sample", "text", or "paragraph", and it will be highlighted.
+    Feel free to try different search terms to test the feature.
+  </p>
+
+  <input type="text" id="searchInput" placeholder="Enter text to search" />
+  <button onclick="highlightText()">Search</button>
+  <button onclick="removeHighlights()">Clear</button>
+
+  <script>
+    function highlightText() {
+      const keyword = document.getElementById("searchInput").value.trim();
+      if (!keyword) return;
+
+      removeHighlights();
+
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const parent = node.parentNode;
+
+        if (node.nodeValue.toLowerCase().includes(keyword.toLowerCase())) {
+          const regex = new RegExp(`(${keyword})`, 'gi');
+          const spanHTML = node.nodeValue.replace(regex, '<span class="highlight">$1</span>');
+          const spanWrapper = document.createElement('span');
+          spanWrapper.innerHTML = spanHTML;
+          parent.replaceChild(spanWrapper, node);
+        }
+      }
+    }
+
+    function removeHighlights() {
+      const highlights = document.querySelectorAll('span.highlight');
+      highlights.forEach(span => {
+        const parent = span.parentNode;
+        parent.replaceChild(document.createTextNode(span.textContent), span);
+        parent.normalize();
+      });
+    }
+  </script>
+
+</body>
+</html>

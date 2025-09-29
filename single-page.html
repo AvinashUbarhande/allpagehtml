@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voltride Electric Scooter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .thumbnail-img {
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .thumbnail-img:hover,
+    .thumbnail-img.active {
+      border-color: #007bff;
+    }
+    .main-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .img-thumbnail {
+      width: 30%;
+      height: auto;
+    }
+    .product-details {
+      font-size: 16px;
+    }
+    .btn-cart {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="row g-4">
+      <!-- Left Column: Images -->
+      <div class="col-md-6">
+        <img id="mainImage" src="img/1200x800-px-city-far-view-metropolis-new-york-state-skyscraper-sports-auto-racing-hd-art-wallpaper-preview.jpg" alt="Voltride Electric Scooter" class="img-fluid main-img mb-3">
+
+        <div class="d-flex justify-content-between">
+          <img src="img/images-1.jpg" class="img-thumbnail thumbnail-img" onclick="changeImage(this)" alt="Side View">
+          <img src="img/img-2.jpg" class="img-thumbnail thumbnail-img" onclick="changeImage(this)" alt="Back View">
+          <img src="img/img-3.jpg" class="img-thumbnail thumbnail-img" onclick="changeImage(this)" alt="Folded View">
+        </div>
+      </div>
+
+      <!-- Right Column: Product Info -->
+      <div class="col-md-6">
+        <h2 class="mb-3">Voltride X1 Electric Scooter</h2>
+        <p class="text-muted">Product SKU: VTX1-2025</p>
+        <h4 class="text-success">$899.99</h4>
+
+        <p class="product-details">
+          The Voltride X1 is a high-performance electric scooter built for urban commuting. Featuring a 750W motor, up to 45km range, and foldable design, it's both powerful and portable.
+        </p>
+
+        <ul class="list-unstyled">
+          <li>🔋 750W Brushless Motor</li>
+          <li>⚡ 45km Maximum Range</li>
+          <li>⏱️ Top Speed: 35 km/h</li>
+          <li>🛞 10" Air-filled Tires</li>
+          <li>🔧 Foldable Frame for Easy Storage</li>
+        </ul>
+
+        <div class="mb-3 mt-4">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" id="quantity" class="form-control" value="1" min="1">
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-cart">
+          🛒 Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to handle image swapping -->
+  <script>
+    function changeImage(el) {
+      const mainImage = document.getElementById("mainImage");
+      mainImage.src = el.src;
+
+      document.querySelectorAll(".thumbnail-img").forEach(img => img.classList.remove("active"));
+      el.classList.add("active");
+    }
+  </script>
+</body>
+</html>

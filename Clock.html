@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock with Circular Design</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .clock-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .clock {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock-line {
+            position: absolute;
+            width: 2px;
+            background-color: #000;
+            transform-origin: bottom center;
+            transition: transform 0.05s;
+        }
+
+        .clock-line.hour {
+            height: 50px;
+            background-color: #ff5733;
+        }
+
+        .clock-line.minute {
+            height: 70px;
+            background-color: #33c4ff;
+        }
+
+        .clock-line.second {
+            height: 90px;
+            background-color: #39ff14;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="clock-container">
+        <div class="clock">
+            <!-- Clock hands -->
+            <div class="clock-line hour" id="hourLine"></div>
+            <div class="clock-line minute" id="minuteLine"></div>
+            <div class="clock-line second" id="secondLine"></div>
+        </div>
+    </div>
+    <button id="toggleButton">Switch to Dark Mode</button>
+
+    <script>
+        const toggleButton = document.getElementById("toggleButton");
+        const body = document.body;
+
+        // Clock lines elements
+        const hourLine = document.getElementById("hourLine");
+        const minuteLine = document.getElementById("minuteLine");
+        const secondLine = document.getElementById("secondLine");
+
+        // Update the clock hands' rotation
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Calculate the rotation of each line (degree per unit of time)
+            const hourDegree = (hours % 12) * 30 + (minutes / 60) * 30;
+            const minuteDegree = minutes * 6 + (seconds / 60) * 6;
+            const secondDegree = seconds * 6;
+
+            // Apply the rotation to each line
+            hourLine.style.transform = `rotate(${hourDegree}deg)`;
+            minuteLine.style.transform = `rotate(${minuteDegree}deg)`;
+            secondLine.style.transform = `rotate(${secondDegree}deg)`;
+        }
+
+        // Toggle between light and dark mode
+        toggleButton.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                toggleButton.textContent = 'Switch to Light Mode';
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                toggleButton.textContent = 'Switch to Dark Mode';
+            }
+        });
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial clock update
+        updateClock();
+    </script>
+</body>
+</html>

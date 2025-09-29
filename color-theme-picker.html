@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Theme Picker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Button Style */
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            cursor: pointer;
+        }
+
+        /* Active Button Style */
+        .color-btn.active {
+            border: 2px solid #000;
+        }
+
+        /* Container for Custom Color Picker */
+        .color-input-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Color input box style */
+        .color-input-container input[type="color"] {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Row styling */
+        .row {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Predefined Color Buttons -->
+    <div class="row row-cols-4 gy-2 gx-2">
+        <div class="col">
+            <button class="color-btn" style="background-color: #F50963;" data-color="#F50963"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #008080;" data-color="#008080"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #AB6C56;" data-color="#AB6C56"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #3661FC;" data-color="#3661FC"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #2CAE76;" data-color="#2CAE76"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #FF5A1B;" data-color="#FF5A1B"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #03041C;" data-color="#03041C"></button>
+        </div>
+        <div class="col">
+            <button class="color-btn" style="background-color: #ED212C;" data-color="#ED212C"></button>
+        </div>
+    </div>
+
+    <!-- Custom Color Picker -->
+    <div class="color-input-container">
+        <h6>Choose Custom Color</h6>
+        <input type="color" id="color-picker" value="#F50963">
+    </div>
+</div>
+
+<!-- Script for Color Functionality -->
+<script>
+    // Select all color buttons
+    const colorButtons = document.querySelectorAll('.color-btn');
+
+    // Function to update active button when a color is selected
+    function updateActiveButton(selectedButton) {
+        // Remove 'active' class from all buttons
+        colorButtons.forEach(button => button.classList.remove('active'));
+
+        // Add 'active' class to the clicked button
+        selectedButton.classList.add('active');
+
+        // Update the color input with the selected button's color
+        const selectedColor = selectedButton.getAttribute('data-color');
+        document.getElementById('color-picker').value = selectedColor;
+    }
+
+    // Add event listener for each color button
+    colorButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            updateActiveButton(button);
+        });
+    });
+
+    // Handle color change from the color input
+    const colorInput = document.getElementById('color-picker');
+    colorInput.addEventListener('input', function () {
+        const selectedColor = colorInput.value;
+        
+        // Find the active button and change its color
+        const activeButton = document.querySelector('.color-btn.active');
+        if (activeButton) {
+            activeButton.style.backgroundColor = selectedColor;
+            activeButton.setAttribute('data-color', selectedColor);
+        }
+    });
+
+    // Set the default active color
+    updateActiveButton(colorButtons[0]);  // Set the first button as active initially
+</script>
+
+</body>
+</html>

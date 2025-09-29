@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Speedometer - CodeCrafters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+
+    .avatar {
+      margin-bottom: 20px;
+    }
+
+    .avatar img {
+      width: 80px;
+      border-radius: 50%;
+    }
+
+    .speedometer {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: #fff;
+      border: 5px solid #333;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #e6e6e6, #fff);
+      position: absolute;
+    }
+
+    .speed-needle {
+      position: absolute;
+      width: 4px;
+      height: 120px;
+      background-color: red;
+      transform-origin: 50% 100%;
+      transform: rotate(0deg);
+      transition: transform 0.1s ease-out;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      text-align: center;
+    }
+
+    input[type="range"] {
+      width: 80%;
+    }
+
+    #currentSpeed {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="avatar">
+    <img src="https://www.example.com/codecrafts-avatar.png" alt="CodeCrafters Avatar">
+  </div>
+
+  <div class="speedometer">
+    <div class="circle">
+      <div class="speed-needle" id="speedNeedle"></div>
+    </div>
+    <div class="controls">
+      <input type="range" id="speedControl" min="0" max="200" step="1" value="0">
+      <span id="currentSpeed">Speed: 0</span>
+    </div>
+  </div>
+
+  <script>
+    const speedControl = document.getElementById('speedControl');
+    const currentSpeed = document.getElementById('currentSpeed');
+    const speedNeedle = document.getElementById('speedNeedle');
+
+    speedControl.addEventListener('input', (event) => {
+      const speed = event.target.value;
+      const angle = (speed / 200) * 180; // Max speed is 200, so 180 degrees for the needle.
+      speedNeedle.style.transform = `rotate(${angle - 90}deg)`; // Subtract 90 to start from 0 at the bottom.
+      currentSpeed.textContent = `Speed: ${speed}`;
+    });
+  </script>
+</body>
+</html>

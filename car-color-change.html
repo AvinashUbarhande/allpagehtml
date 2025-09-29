@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Color Change</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        section {
+            height: calc(100vh - 50px);
+            background: url('https://images.pexels.com/photos/981041/pexels-photo-981041.jpeg?auto=compress&cs=tinysrgb&h=1050&w=1920');
+            background-size: cover;
+            background-position: center;
+        }
+
+        ul {
+            position: absolute;
+            margin: 0;
+            left: 0;
+            width: 100%;
+            bottom: 0;
+            height: 50px;
+            padding: 0;
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        li {
+            position: relative;
+            list-style: none;
+            width: 20%;
+            height: 100%;
+            transition: all 0.3s ease;
+            mix-blend-mode: hue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul li:nth-child(1) {
+            background: #ff5500;
+        }
+
+        ul li:nth-child(2) {
+            background: #55ff00;
+        }
+
+        ul li:nth-child(3) {
+            background: #00b3b3;
+        }
+
+        ul li:nth-child(4) {
+            background: #44cc00;
+        }
+
+        ul li:nth-child(5) {
+            background: #e645a0;
+        }
+
+        ul li:hover {
+            box-shadow: 0 0 0 1500px transparent;
+            opacity: 1;
+        }
+
+        ul li:hover:nth-child(1) {
+            box-shadow: 0 0 0 1500px #ff5500;
+        }
+
+        ul li:hover:nth-child(2) {
+            box-shadow: 0 0 0 1500px #55ff00;
+        }
+
+        ul li:hover:nth-child(3) {
+            box-shadow: 0 0 0 1500px #00b3b3;
+        }
+
+        ul li:hover:nth-child(4) {
+            box-shadow: 0 0 0 1500px #44cc00;
+        }
+
+        ul li:hover:nth-child(5) {
+            box-shadow: 0 0 0 1500px #e645a0;
+        }
+
+        ul li {
+            transition: box-shadow 0.3s ease, opacity 0.3s ease;
+        }
+
+        ul:hover li {
+            opacity: 0;
+        }
+
+        ul li:hover {
+            opacity: 1;
+        }
+
+        .checkbox {
+            display: none;
+        }
+
+        .color-box.selected .checkbox {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section>
+        <ul>
+            <li class="color-box" data-color="#ff5500"><input type="checkbox" class="checkbox"></li>
+            <li class="color-box" data-color="#55ff00"><input type="checkbox" class="checkbox"></li>
+            <li class="color-box" data-color="#00b3b3"><input type="checkbox" class="checkbox"></li>
+            <li class="color-box" data-color="#44cc00"><input type="checkbox" class="checkbox"></li>
+            <li class="color-box" data-color="#e645a0"><input type="checkbox" class="checkbox"></li>
+        </ul>
+    </section>
+
+    <script>
+        const colorBoxes = document.querySelectorAll('.color-box');
+
+        colorBoxes.forEach((box) => {
+            box.addEventListener('mouseenter', () => {
+                const color = box.getAttribute('data-color');
+                box.style.boxShadow = `0 0 0 1500px ${color}`;
+            });
+
+            box.addEventListener('mouseleave', () => {
+                box.style.boxShadow = '0 0 0 1500px transparent';
+            });
+
+            box.addEventListener('click', () => {
+                box.classList.toggle('selected');
+            });
+        });
+    </script>
+
+</body>
+</html>

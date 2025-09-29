@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Animation with Engine Sound</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #87CEEB; /* Sky blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Plane Style */
+        .plane {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background: url('https://www.clipartmax.com/png/middle/19-191485_airplane-clipart-icon.png') no-repeat center center;
+            background-size: contain;
+            bottom: 50px;
+            left: -250px; /* Start off-screen */
+            transition: transform 0.5s ease-out;
+        }
+
+        /* Rotate the plane while moving */
+        .rotate-plane {
+            animation: plane-rotation 3s infinite linear;
+        }
+
+        /* Plane rotation animation */
+        @keyframes plane-rotation {
+            0% {
+                transform: rotate(0deg); /* Plane starts at 0 degrees */
+            }
+            50% {
+                transform: rotate(15deg); /* Tilt the plane slightly */
+            }
+            100% {
+                transform: rotate(0deg); /* Plane returns to neutral position */
+            }
+        }
+
+        /* Button */
+        .sound-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sound-button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Plane Animation with Engine Sound</h1>
+
+    <!-- Plane -->
+    <div class="plane" id="plane"></div>
+
+    <!-- Button to control plane movement and sound -->
+    <button class="sound-button" id="start-button">Start Engine</button>
+
+    <!-- Plane Engine Sound -->
+    <audio id="engine-sound" loop>
+        <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+
+<script>
+    const startButton = document.getElementById("start-button");
+    const engineSound = document.getElementById("engine-sound");
+    const plane = document.getElementById("plane");
+
+    // Start Engine and Plane Animation
+    startButton.addEventListener("click", function () {
+        if (engineSound.paused) {
+            // Play engine sound when the button is clicked
+            engineSound.play();
+            startButton.textContent = "Stop Engine";
+            
+            // Start rotating the plane
+            plane.classList.add("rotate-plane");
+
+            // Move the plane to the right with smooth animation
+            plane.style.animation = "move-plane 10s linear infinite";
+        } else {
+            // Stop engine sound if playing
+            engineSound.pause();
+            engineSound.currentTime = 0; // Reset the sound
+
+            startButton.textContent = "Start Engine";
+
+            // Stop plane rotation and movement
+            plane.classList.remove("rotate-plane");
+            plane.style.animation = "none";
+        }
+    });
+
+    // Define plane movement animation
+    @keyframes move-plane {
+        100% {
+            transform: translateX(100vw); /* Move the plane across the screen */
+        }
+    }
+</script>
+
+</body>
+</html>

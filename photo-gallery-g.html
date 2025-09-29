@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery with Filters</title>
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Filter Section */
+.filters-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    background-color: #0e76a8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #095d8c;
+}
+
+/* Gallery Section */
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    justify-items: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+#caption {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+/* Close Button */
+.close {
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filters-container {
+        text-align: center;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Filter Section -->
+    <div id="filters" class="filters-container">
+        <button class="filter-btn" onclick="filterGallery('all')">All</button>
+        <button class="filter-btn" onclick="filterGallery('nature')">Nature</button>
+        <button class="filter-btn" onclick="filterGallery('city')">City</button>
+        <button class="filter-btn" onclick="filterGallery('portrait')">Portraits</button>
+    </div>
+
+    <!-- Gallery Section -->
+    <div id="gallery" class="gallery-container">
+        <div class="gallery-item nature">
+            <img src="assets/gemini.png" alt="Nature 1">
+        </div>
+        <div class="gallery-item city">
+            <img src="assets/home-Banner.jpg" alt="City 1">
+        </div>
+        <div class="gallery-item portrait">
+            <img src="portrait1.jpg" alt="Portrait 1">
+        </div>
+        <div class="gallery-item nature">
+            <img src="nature2.jpg" alt="Nature 2">
+        </div>
+        <div class="gallery-item city">
+            <img src="city2.jpg" alt="City 2">
+        </div>
+        <div class="gallery-item portrait">
+            <img src="portrait2.jpg" alt="Portrait 2">
+        </div>
+    </div>
+
+    <!-- Modal Section -->
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="caption"></div>
+    </div>
+
+    <script  >
+        // Function to filter gallery items by category
+function filterGallery(category) {
+    const items = document.querySelectorAll('.gallery-item');
+    if (category === 'all') {
+        items.forEach(item => {
+            item.style.display = 'block';
+        });
+    } else {
+        items.forEach(item => {
+            if (item.classList.contains(category)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Modal functionality: Open the image in full size
+let modal = document.getElementById("modal");
+let modalImg = document.getElementById("modal-img");
+let captionText = document.getElementById("caption");
+
+function openModal(img) {
+    modal.style.display = "block";
+    modalImg.src = img.src;
+    captionText.innerHTML = img.alt;
+}
+
+// Function to close the modal
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Add event listener to all gallery images to open in modal
+document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', () => openModal(img));
+});
+
+// Close modal when clicking on the background
+window.onclick = function(event) {
+    if (event.target == modal) {
+        closeModal();
+    }
+};
+
+    </script>
+</body>
+</html>

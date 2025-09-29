@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC On/Off Sound</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Turn AC On/Off</h1>
+    <button id="acOnButton">Turn AC On</button>
+    <button id="acOffButton">Turn AC Off</button>
+
+    <!-- Audio files for AC On and AC Off -->
+    <audio id="acOnSound" src="assets/ac.mp3" preload="auto"></audio>
+    <audio id="acOffSound" src="assets/acoff.mp3" preload="auto"></audio>
+
+    <script>
+        // Get buttons and audio elements
+        const acOnButton = document.getElementById('acOnButton');
+        const acOffButton = document.getElementById('acOffButton');
+        const acOnSound = document.getElementById('acOnSound');
+        const acOffSound = document.getElementById('acOffSound');
+
+        // Add event listeners to the buttons
+        acOnButton.addEventListener('click', function() {
+            acOnSound.play(); // Play the AC on sound
+          //  alert('AC is ON');
+        });
+
+        acOffButton.addEventListener('click', function() {
+            acOffSound.play(); // Play the AC off sound
+           // alert('AC is OFF');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Loading with IntersectionObserver</title>
+</head>
+<body>
+  <h1>Scroll down to see images load lazily</h1>
+
+  <img class="lazy" data-src="image1.jpg" alt="Image 1">
+  <img class="lazy" data-src="image2.jpg" alt="Image 2">
+  <img class="lazy" data-src="image3.jpg" alt="Image 3">
+
+  <script>
+    const lazyImages = document.querySelectorAll('.lazy');
+
+    const lazyLoad = (image) => {
+      const src = image.getAttribute('data-src');
+      if (src) {
+        image.src = src;
+        image.classList.remove('lazy');
+      }
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          lazyLoad(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    lazyImages.forEach(image => {
+      observer.observe(image);
+    });
+  </script>
+</body>
+</html>

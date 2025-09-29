@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>English to Marathi Translation with Google Cloud API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      font-size: 16px;
+      padding: 10px;
+      resize: vertical;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      min-height: 100px;
+      white-space: pre-wrap;
+      background: #f9f9f9;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>English to Marathi Translation (Google Cloud API)</h2>
+  <textarea id="inputText" placeholder="Enter English text here..."></textarea><br/>
+  <button onclick="translateText()">Translate</button>
+
+  <div id="output">Translation will appear here...</div>
+
+  <script>
+    async function translateText() {
+      const input = document.getElementById('inputText').value.trim();
+      const output = document.getElementById('output');
+
+      if (!input) {
+        output.innerText = "Please enter some English text to translate.";
+        return;
+      }
+
+      const apiKey = 'AIzaSyCFpr_WLt9H7M9ziKodKPkc4iHqAYalW9w'; // Replace with your API key
+
+      const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+      const body = {
+        q: input,
+        source: 'en',
+        target: 'mr',
+        format: 'text'
+      };
+
+      output.innerText = "Translating...";
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(body),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          output.innerText = "Error: " + data.error.message;
+          return;
+        }
+
+        const translatedText = data.data.translations[0].translatedText;
+        output.innerText = translatedText;
+
+      } catch (error) {
+        output.innerText = "Error: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
+<!-- contenteditable="true" -->

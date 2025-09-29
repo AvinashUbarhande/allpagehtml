@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar ul li {
+            display: inline;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .client-list {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .client-list h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul li {
+                margin-bottom: 10px;
+            }
+
+            .client-list h2 {
+                font-size: 20px;
+            }
+
+            th, td {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar h1 {
+                font-size: 20px;
+            }
+
+            .client-list {
+                padding: 10px;
+            }
+
+            th, td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Dashboard</h1>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#clients">Clients</a></li>
+            <li><a href="#jobs">Jobs</a></li>
+            <li><a href="#talent">Talent Search</a></li>
+            <li><a href="#candidates">Candidates</a></li>
+            <li><a href="#employees">Employees</a></li>
+            <li><a href="#documents">Documents</a></li>
+            <li><a href="#esign">E-sign</a></li>
+            <li><a href="#hrtools">HR Tools</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#misc">Misc.</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="client-list">
+            <h2>Clients List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Client</th>
+                        <th>Website</th>
+                        <th>Line of Business</th>
+                        <th>Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>Schneider Electric</td>
+                        <td><a href="https://www.website.com" target="_blank">https://www.website.com</a></td>
+                        <td>Manufacturing of Power System</td>
+                        <td>Options</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Schneider Electric</td>
+                        <td><a href="https://www.website.com" target="_blank">https://www.website.com</a></td>
+                        <td>Manufacturing of Power System</td>
+                        <td>Options</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Schneider Electric</td>
+                        <td><a href="https://www.website.com" target="_blank">https://www.website.com</a></td>
+                        <td>Manufacturing of Power System</td>
+                        <td>Options</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Schneider Electric</td>
+                        <td><a href="https://www.website.com" target="_blank">https://www.website.com</a></td>
+                        <td>Manufacturing of Power System</td>
+                        <td>Options</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Showing 1 to 4 of 4 entries</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright © 2010 - 2025 Workpod All rights reserved | <a href="#" style="color: white;">Terms & Conditions</a> | <a href="#" style="color: white;">Privacy Policy</a></p>
+    </div>
+</body>
+</html>

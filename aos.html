@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AOS Animation Example</title>
+    
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Add your custom styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 50px;
+            background-color: #34495e;
+            color: white;
+        }
+
+        .section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .section:nth-child(odd) {
+            background-color: #ecf0f1;
+        }
+
+        .section:nth-child(even) {
+            background-color: #bdc3c7;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #34495e;
+            color: white;
+        }
+        div{
+height: 300px;
+width: 200px;
+background-color: #e9948b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header" data-aos="fade-down" data-aos-duration="1000">
+        <h1>Welcome to Our Website</h1>
+        <p>Scroll down to see the magic of AOS animations!</p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section" data-aos="fade-up" data-aos-duration="1500">
+        <h2>Our Mission</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet malesuada eros, sit amet elementum ante. Cras imperdiet cursus magna, ut volutpat velit volutpat non.</p>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of services to help you grow your business. From web development to digital marketing, we've got you covered.</p>
+        <a href="#" class="cta-btn">Learn More</a>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section" data-aos="flip-left" data-aos-duration="1500">
+        <h2>Why Choose Us</h2>
+        <p>We focus on delivering high-quality services and results. Our team of experts is dedicated to your success.</p>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section" data-aos="fade-right" data-aos-duration="1000">
+        <h2>Contact Us</h2>
+        <p>If you're interested in working with us, please reach out. We’d love to discuss your project!</p>
+        <a href="#" class="cta-btn">Get in Touch</a>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+        <p>&copy; 2025 Your Company. All Rights Reserved.</p>
+    </div>
+
+ 
+    <div data-aos="fade-up"></div>
+    <div data-aos="fade-down"></div>
+    <div data-aos="fade-right"></div>
+    <div data-aos="fade-left"></div>
+    <div data-aos="fade-up-right"></div>
+    <div data-aos="fade-up-left"></div>
+    <div data-aos="fade-down-right"></div>
+    <div data-aos="fade-down-left"></div>
+    Flip
+    <div data-aos="flip-left"></div>
+    <div data-aos="flip-right"></div>
+    <div data-aos="flip-up"></div>
+    <div data-aos="flip-down"></div>
+    Zoom
+    <div data-aos="zoom-in"></div>
+    <div data-aos="zoom-in-up"></div>
+    <div data-aos="zoom-in-down"></div>
+    <div data-aos="zoom-in-left"></div>
+    <div data-aos="zoom-in-right"></div>
+    <div data-aos="zoom-out"></div>
+    <div data-aos="zoom-out-up"></div>
+    <div data-aos="zoom-out-down"></div>
+    <div data-aos="zoom-out-right"></div>
+    <div data-aos="zoom-out-left"></div>
+    Different settings examples
+    <div data-aos="fade-up"
+         data-aos-duration="3000">
+    </div>
+    <div data-aos="fade-down"
+         data-aos-easing="linear"
+         data-aos-duration="1500">
+    </div>
+    <div data-aos="fade-right"
+         data-aos-offset="300"
+         data-aos-easing="ease-in-sine">
+    </div>
+    <div data-aos="fade-left"
+         data-aos-anchor="#example-anchor"
+         data-aos-offset="500"
+         data-aos-duration="500">
+    </div>
+    <div data-aos="fade-zoom-in"
+         data-aos-easing="ease-in-back"
+         data-aos-delay="300"
+         data-aos-offset="0">
+    </div>
+    <div data-aos="flip-left"
+         data-aos-easing="ease-out-cubic"
+         data-aos-duration="2000">
+    </div>
+  
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="top-bottom">
+    </div>
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="center-bottom">
+    </div>
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="bottom-bottom">
+    </div>
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="top-center">
+    </div>
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="center-center">
+    </div>
+    <div data-aos="fade-up"
+         data-aos-anchor-placement="bottom-center">
+    </div>
+    Get it
+    Download View on github
+    Install using Yarn, Npm, Bower
+    yarn add aos
+    npm install aos --save
+    bower install aos --save
+    CDN sources
+    CSS
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    JS
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    Initialize AOS
+    <script>
+      AOS.init();
+    </script>
+    <!-- AOS JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+    </script>
+</body>
+</html>

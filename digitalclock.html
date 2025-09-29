@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Zone Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .clock-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .city {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .time {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .timezone {
+      color: #888;
+      font-size: 1rem;
+    }
+
+    .clocks {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .clock {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      width: 250px;
+      margin: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .clock span {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock-container">
+    <h1>World Time Zone Clock</h1>
+    <div class="clocks">
+      <!-- Clocks will be dynamically generated here -->
+    </div>
+  </div>
+
+  <script>
+    // List of cities and their timezones
+    const timeZones = [
+      { city: "New York", timeZone: "America/New_York" },
+      { city: "London", timeZone: "Europe/London" },
+      { city: "Tokyo", timeZone: "Asia/Tokyo" },
+      { city: "Sydney", timeZone: "Australia/Sydney" },
+      { city: "Paris", timeZone: "Europe/Paris" },
+      { city: "Moscow", timeZone: "Europe/Moscow" },
+      { city: "Los Angeles", timeZone: "America/Los_Angeles" },
+      { city: "Delhi", timeZone: "Asia/Kolkata" } // Added India (Delhi)
+    ];
+
+    // Function to create a clock for each city
+    function updateClock(city, timeZone) {
+      const now = new Date().toLocaleString("en-US", { timeZone });
+      const time = new Date(now);
+      const hours = time.getHours().toString().padStart(2, "0");
+      const minutes = time.getMinutes().toString().padStart(2, "0");
+      const seconds = time.getSeconds().toString().padStart(2, "0");
+
+      return `
+        <div class="clock">
+          <div class="city">${city}</div>
+          <div class="time">${hours}:${minutes}:${seconds}</div>
+          <div class="timezone">${timeZone}</div>
+        </div>
+      `;
+    }
+
+    // Function to render all clocks
+    function renderClocks() {
+      const clocksContainer = document.querySelector(".clocks");
+      clocksContainer.innerHTML = "";
+
+      timeZones.forEach(({ city, timeZone }) => {
+        clocksContainer.innerHTML += updateClock(city, timeZone);
+      });
+    }
+
+    // Update clocks every second
+    setInterval(renderClocks, 1000);
+    renderClocks(); // Initial rendering of clocks
+  </script>
+
+</body>
+</html>

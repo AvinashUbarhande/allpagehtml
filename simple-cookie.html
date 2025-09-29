@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent</title>
+    <style>
+        /* Cookie consent banner style */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: none;
+            font-family: Arial, sans-serif;
+        }
+
+        #cookieConsent button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #cookieConsent button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieConsent">
+    <p>This website uses cookies to enhance your experience. By continuing to use this site, you agree to our use of cookies.</p>
+    <button onclick="acceptCookies()">ACCEPT</button>
+</div>
+
+<script>
+    // Function to show the cookie consent banner if cookies are not accepted
+    function checkCookieConsent() {
+        const cookieAccepted = localStorage.getItem("cookiesAccepted");
+        if (!cookieAccepted) {
+            document.getElementById('cookieConsent').style.display = "block";
+        }
+    }
+
+    // Function to accept cookies and hide the banner
+    function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "true");
+        document.getElementById('cookieConsent').style.display = "none";
+    }
+
+    // Check if cookies have been accepted when the page loads
+    window.onload = checkCookieConsent;
+</script>
+
+</body>
+</html>

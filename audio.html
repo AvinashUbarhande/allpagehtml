@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Audio Full Function Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .audio-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+
+        h1 {
+            color: #0077cc;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="audio-container">
+        <h1>🎵 HTML5 Audio Player</h1>
+        <p>Enjoy this sample audio with full controls:</p>
+
+        <!-- HTML5 Audio Player -->
+        <audio 
+            controls
+            preload="auto"
+            loop
+            muted
+        >
+            <!-- MP3 format -->
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+
+            <!-- OGG format -->
+            <source src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg" type="audio/ogg">
+
+            Your browser does not support the audio element.
+        </audio>
+
+        <p><small>Audio formats: MP3 & OGG. Looping and muted by default.</small></p>
+    </div>
+
+</body>
+</html>
+ 

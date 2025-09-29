@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Translate Example (No API Key)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .goog-te-gadget img,.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
+            display: none!important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose Your Language</h1>
+
+    <div class="container" id="textContainer">
+        <p  >Hello, welcome to our website!</p>
+    </div>
+
+    <!-- Google Translate Widget Script -->
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        // Google Translate initialization function
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language of your page
+                includedLanguages: 'en,es,fr,de,it,pt,hi,zh-CN', // Supported languages for translation
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+
+        // Load Google Translate API script
+        function loadGoogleTranslateScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(script);
+        }
+
+        // Load the Google Translate script after the page is loaded
+        window.onload = loadGoogleTranslateScript;
+    </script>
+
+</body>
+</html>

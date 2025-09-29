@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Click Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .carousel-item > .row {
+      display: flex;
+    }
+
+    .card {
+      flex: 1;
+      margin: 10px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    /* Flip effect for first card */
+    .flip-card {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover .flip-card {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+
+    .flip-card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flip-card-back {
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back img {
+      width: 100px;
+      height: auto;
+    }
+
+    @media (max-width: 767.98px) {
+      .carousel-item > .row > div {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .carousel-item > .row > div {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row">
+          <!-- First card with flip effect -->
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <div class="flip-card">
+                <div class="flip-card-front">
+                  <img src="https://via.placeholder.com/300x300?text=Front+Image" alt="Front Image">
+                </div>
+                <div class="flip-card-back">
+                  <img src="https://via.placeholder.com/100x100?text=Logo" alt="Logo">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second card -->
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <img src="https://via.placeholder.com/300x300?text=Card+2" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card Title 2</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- Third card -->
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <img src="https://via.placeholder.com/300x300?text=Card+3" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card Title 3</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <img src="https://via.placeholder.com/300x300?text=Card+4" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card Title 4</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <img src="https://via.placeholder.com/300x300?text=Card+5" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card Title 5</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" onclick="nextSlide()">
+              <img src="https://via.placeholder.com/300x300?text=Card+6" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card Title 6</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls (optional) -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function nextSlide() {
+    var carousel = bootstrap.Carousel.getInstance(document.getElementById('cardCarousel'));
+    carousel.next();
+  }
+</script>
+</body>
+</html>

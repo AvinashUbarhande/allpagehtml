@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Sell Landing Page</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul li {
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Coin Sell</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#live-trading">Live Trading</a></li>
+            <li><a href="#sell-coins">Sell Coins</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <section id="live-trading">
+        <h2>Live Trading</h2>
+        <div id="trading-data">
+            <!-- Live stock data will be displayed here -->
+        </div>
+    </section>
+
+    <section id="sell-coins">
+        <h2>Sell Your Coins</h2>
+        <form id="sell-form">
+            <label for="coin-type">Coin Type:</label>
+            <select id="coin-type" name="coin-type">
+                <option value="bitcoin">Bitcoin</option>
+                <option value="ethereum">Ethereum</option>
+                <!-- Add more coin options as needed -->
+            </select>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <button type="submit">Sell Now</button>
+        </form>
+    </section>
+
+    <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+    {
+    "symbols": [
+      [
+        "Google",
+        "GOOGL|1D"
+      ],
+      [
+        "Microsoft",
+        "MSFT|1D"
+      ],
+      [
+        "BITSTAMP:BTCUSD|1D"
+      ],
+      [
+        "NASDAQ:TSLA|1D"
+      ],
+      [
+        "OANDA:EURJPY|1D"
+      ]
+    ],
+    "chartOnly": false,
+    "width": "100%",
+    "height": "100%",
+    "locale": "en",
+    "colorTheme": "light",
+    "autosize": true,
+    "showVolume": false,
+    "showMA": false,
+    "hideDateRanges": false,
+    "hideMarketStatus": false,
+    "hideSymbolLogo": false,
+    "scalePosition": "right",
+    "scaleMode": "Normal",
+    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+    "fontSize": "10",
+    "noTimeScale": false,
+    "valuesTracking": "1",
+    "changeMode": "price-and-percent",
+    "chartType": "area",
+    "maLineColor": "#2962FF",
+    "maLineWidth": 1,
+    "maLength": 9,
+    "headerFontSize": "medium",
+    "lineWidth": 2,
+    "lineType": 0,
+    "dateRanges": [
+       
+      "all|1d"
+    ]
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+
+    <div class="footer">
+        <p>&copy; 2023 Coin Sell. All rights reserved. | <a href="#" style="color: white;">Terms & Conditions</a> | <a href="#" style="color: white;">Privacy Policy</a></p>
+    </div>
+
+    <script  >
+        document.addEventListener('DOMContentLoaded', function() {
+    const tradingDataDiv = document.getElementById('trading-data');
+
+    // Simulate fetching live stock data
+    function fetchLiveStockData() {
+        // This is a placeholder for actual live stock data fetching
+        tradingDataDiv.innerHTML = '<p>Live stock data will be displayed here.</p>';
+    }
+
+    fetchLiveStockData();
+
+    const sellForm = document.getElementById('sell-form');
+    sellForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const coinType = document.getElementById('coin-type').value;
+        const amount = document.getElementById('amount').value;
+        alert(`You are selling ${amount} of ${coinType}`);
+    });
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Rewrite Example</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the current URL ends with .html
+            if (window.location.pathname.endsWith('.html')) {
+                // Remove the .html extension
+                const newPath = window.location.pathname.slice(0, -5);
+                
+                // Update the browser's URL without reloading the page
+                history.pushState(null, null, newPath);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to the page!</h1>
+    <p>If your URL ends with .html, it will be removed automatically without reloading the page.</p>
+</body>
+</html>

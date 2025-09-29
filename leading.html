@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Hero Section & Cookies Modal</title>
+    <!-- Add Bootstrap CDN for responsive layout and modal -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Hero Section Styles */
+        .hero-section {
+            background-image: url('./img/1200x800-px-city-far-view-metropolis-new-york-state-skyscraper-sports-auto-racing-hd-art-wallpaper-preview.jpg');
+            /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .hero-section-center-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40%;
+        }
+
+        .hero-section-center {
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            color: white;
+            text-align: center;
+
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Transparent background */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        /* Footer Images Styling */
+        .footer-images img {
+            width: 100%;
+            height: auto;
+        }
+
+        .footer-section {
+            padding: 0px 0;
+        }
+
+        .navbar {
+            background-color: transparent;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        /* .container {
+            margin-top: 20px;
+        } */
+        .goog-te-gadget img,.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate{
+            display: none!important;
+        }
+        body{
+            top: 0!important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> 
+<div id="google_translate_element"></div>
+                            </a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Terms & Conditions</a>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section  ">
+        <div class="hero-section-center pt-5  ">
+            <div class="hero-text  pt-5">
+                <h1>Welcome to Our Website</h1>
+                <p>Discover amazing content and services</p>
+            </div>
+        </div>
+        <div class="hero-section-center-1 hero-section-center">
+            <button class="hero-button " onclick="window.location.href='#'">Get Started</button>
+
+        </div>
+    </section>
+
+
+    <!-- Footer Section (Images) -->
+    <section class="footer-section position-relative  ">
+        <div class="position-absolute bottom-0 text-center w-100">
+            <div class="container ">
+                <div class="row footer-images ">
+                    <div class="col-md-4">
+                        <img src="img/images-1.jpg" alt="Image 1">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/img-2.jpg" alt="Image 2">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/img-3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+<!-- Language Modal with Google Translate -->
+<div class="modal fade" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="languageModalLabel">Select Language</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="languageSelect" class="form-label">Select Language</label>
+                    <!-- Google Translate Element inside the Modal -->
+                    <div id="google_translate_element_1" class=""></div> 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitLanguage()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Bootstrap JS, jQuery, and Google Translate API -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS and Google Translate API -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        // Google Translate initialization function
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language of your page
+                includedLanguages: 'en,es,fr,de,it,pt', // Supported languages for translation
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+               // Google Translate initialization function
+               function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language of your page
+                includedLanguages: 'en,es,fr,de,it,pt', // Supported languages for translation
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element_1');
+        }
+
+        // Load Google Translate API script
+        function loadGoogleTranslateScript() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            document.body.appendChild(script);
+        }
+
+        // Show modal and load Google Translate after page loads
+        window.onload = function() {
+            loadGoogleTranslateScript();
+            // Show the modal by default on page load
+            $('#languageModal').modal('show');
+        }
+
+        // Submit function for the modal (closes the modal on submit)
+        function submitLanguage() {
+            // Close the modal on Submit
+            $('#languageModal').modal('hide');
+            // You can add additional logic to handle the selected language if needed
+        }
+    </script>
+
+</body>
+</html>

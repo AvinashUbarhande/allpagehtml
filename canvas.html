@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabbed SPA with Animation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background: #333;
+      display: flex;
+    }
+
+    nav button {
+      flex: 1;
+      padding: 15px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    nav button:hover {
+      background: #555;
+    }
+
+    .content {
+      position: relative;
+      overflow: hidden;
+      height: 200px; /* Fixed height to make animation visible */
+    }
+
+    .tab-page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transform: translateX(20px);  
+      transition: opacity .3s ease, transform .5s ease;
+      pointer-events: none;
+    }
+
+    .tab-page.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Tabs -->
+  <nav>
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('about')">About</button>
+    <button onclick="showTab('contact')">Contact</button>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <div id="home" class="tab-page active">
+      <h1>Home</h1>
+      <p>Welcome to our homepage!</p>
+    </div>
+
+    <div id="about" class="tab-page">
+      <h1>About Us</h1>
+      <p>Learn more about our company.</p>
+    </div>
+
+    <div id="contact" class="tab-page">
+      <h1>Contact</h1>
+      <p>Get in touch through our contact form.</p>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const pages = document.querySelectorAll('.tab-page');
+      pages.forEach(page => {
+        if (page.id === tabId) {
+          page.classList.add('active');
+        } else {
+          page.classList.remove('active');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

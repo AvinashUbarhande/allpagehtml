@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>/* General Reset and Layout */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .menu-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            max-width: 800px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0e76a8;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            color: #0e76a8;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        p {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0e76a8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-container {
+                padding: 20px;
+            }
+        
+            h1 {
+                font-size: 28px;
+            }
+        
+            h2 {
+                font-size: 20px;
+            }
+        
+            .menu-item {
+                padding: 12px;
+            }
+        
+            h3 {
+                font-size: 18px;
+            }
+        
+            p {
+                font-size: 14px;
+            }
+        }
+        </style>
+</head>
+<body>
+
+    <div class="menu-container">
+        <h1>Our Menu</h1>
+
+        <div class="category" id="starters">
+            <h2>Starters</h2>
+            <div class="menu-item">
+                <h3>Bruschetta</h3>
+                <p>A classic Italian appetizer with tomato, basil, and olive oil.</p>
+                <span class="price">$8.99</span>
+            </div>
+            <div class="menu-item">
+                <h3>Stuffed Mushrooms</h3>
+                <p>Champignon mushrooms stuffed with garlic, cheese, and herbs.</p>
+                <span class="price">$7.99</span>
+            </div>
+        </div>
+
+        <div class="category" id="mains">
+            <h2>Main Dishes</h2>
+            <div class="menu-item">
+                <h3>Grilled Chicken</h3>
+                <p>Succulent grilled chicken served with roasted vegetables.</p>
+                <span class="price">$14.99</span>
+            </div>
+            <div class="menu-item">
+                <h3>Beef Steak</h3>
+                <p>Juicy steak cooked to perfection, served with mashed potatoes.</p>
+                <span class="price">$19.99</span>
+            </div>
+        </div>
+
+        <div class="category" id="desserts">
+            <h2>Desserts</h2>
+            <div class="menu-item">
+                <h3>Tiramisu</h3>
+                <p>A classic Italian dessert made with coffee-soaked biscuits and mascarpone.</p>
+                <span class="price">$6.99</span>
+            </div>
+            <div class="menu-item">
+                <h3>Chocolate Lava Cake</h3>
+                <p>Warm chocolate cake with a molten center, served with vanilla ice cream.</p>
+                <span class="price">$7.49</span>
+            </div>
+        </div>
+    </div>
+
+    <script >
+        // This is optional for added interactivity.
+const menuItems = document.querySelectorAll('.menu-item');
+
+menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        alert("You clicked on " + item.querySelector('h3').textContent);
+    });
+});
+
+    </script>
+</body>
+</html>

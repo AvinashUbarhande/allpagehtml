@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe</title>
+    <style>
+        /* Style to make iframe responsive */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 0;
+            padding-bottom: 66.66%; /* Aspect ratio for 16:9 */
+            margin: 20px auto;
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="iframe-container">
+        <iframe srcdoc="<p>HTML content here</p>"></iframe>
+
+    </div>
+
+</body>
+</html>
